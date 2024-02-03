@@ -50,6 +50,7 @@ class Record:
 
     def edit_phone(self, phone, new_phone):
         if phone in self.phones:
+            new_phone = Phone(phone)
             self.phones[self.phones.index(phone)] = new_phone
         else:
             raise ValueError
