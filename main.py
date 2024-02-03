@@ -8,7 +8,7 @@ class Field:
         self.value = value
 
     def __eq__(self, other):
-        return self.value == other.value
+        return self.value == other
 
     def __ne__(self, other):
         return self.value != other.value
@@ -17,7 +17,7 @@ class Field:
         return len(self.value)
 
     def __contains__(self, item):
-        return item == self.value
+        return self.value in item
 
     def __str__(self):
         return str(self.value)
@@ -51,7 +51,7 @@ class Record:
     def edit_phone(self, phone, new_phone):
         phone = Phone(phone)
         if phone in self.phones:
-            new_phone = Phone(phone)
+            new_phone = Phone(new_phone)
             self.phones[self.phones.index(phone)] = new_phone
         else:
             raise ValueError
