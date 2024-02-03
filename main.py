@@ -45,10 +45,11 @@ class Record:
         self.name = Name(name)
         self.phones = []
 
-    def add_phone(self, phone):
-        self.phones.append(phone)
+    def add_phone(self, phone_number):
+        self.phones.append(Phone(phone_number))
 
     def edit_phone(self, phone, new_phone):
+        phone = Phone(phone)
         if phone in self.phones:
             new_phone = Phone(phone)
             self.phones[self.phones.index(phone)] = new_phone
@@ -68,7 +69,7 @@ class Record:
             return None
 
     def __str__(self):
-        return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
+        return f"Contact name: {self.name.value}, phones: {'; '.join(str(p) for p in self.phones)}"
 
 
 class AddressBook(UserDict):
